@@ -23,6 +23,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## 依赖
 * 使用vue webpack模板搭建基础架构
 * 生产环境去掉所有console.log
+* 配置本机ip访问
 * jquery          $和jQuery 即可使用
 * less            在style标签写lang="less" 即可使用
 * normalize.css   统一所有浏览器的基础样式
@@ -31,3 +32,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 * vuex            已经初始化
 * element-ui      饿了么UI
 * nprogress       页面加载进度条
+* vue-router      添加index和notFound页面，添加history模式路由，添加路由懒加载
