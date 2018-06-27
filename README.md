@@ -32,4 +32,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 * vuex            已经初始化
 * element-ui      饿了么UI
 * nprogress       页面加载进度条
-* vue-router      添加index和notFound页面，添加history模式路由，添加路由懒加载
+* vue-router      添加index和notFound页面，history模式，路由懒加载，默认滚动行为
