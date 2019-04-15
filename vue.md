@@ -39,5 +39,37 @@ computed: {
 ></text-document>
 ```
 
-### ref 和 #refs 
+### ref 和 $refs 
+ref 被用来给元素或子组件注册引用ID。引用ID将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：
+$refs 如果ref 引用的是一个组件,通过这个实例是可以调用它的方法和属性
 
+### $parent
+用来从一个子组件访问父组件的实例
+
+### provide 和 inject
+依赖注入,允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。
+``` js
+// 父级组件提供 'foo'
+var Provider = {
+  provide: {
+    foo: 'bar'
+  },
+  // ...
+}
+
+// 子组件注入 'foo'
+var Child = {
+  inject: ['foo'],
+  created () {
+    console.log(this.foo) // => "bar"
+  }
+  // ...
+}
+```
+
+### $forceUpdate
+强制更新Vue数据
+
+### watch 'a.b'
+
+### vueBus $emit $on $off
