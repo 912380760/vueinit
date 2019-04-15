@@ -18,6 +18,8 @@ computed: {
 // 现在再运行 this.fullName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也会相应地被更新。
 ```
 
+### watch 'a.b'
+
 ### $attrs
 在组件实例上绑定的attr属性都可以通过$attrs获取
 
@@ -70,6 +72,6 @@ var Child = {
 ### $forceUpdate
 强制更新Vue数据
 
-### watch 'a.b'
-
 ### vueBus $emit $on $off
+
+### slot
