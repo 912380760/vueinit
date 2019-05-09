@@ -19,6 +19,7 @@ computed: {
 ```
 
 ### watch 'a.b'
+可以通过'a.b'的方式监听this.a.b
 
 ### $attrs
 在组件实例上绑定的attr属性都可以通过$attrs获取
@@ -73,5 +74,78 @@ var Child = {
 强制更新Vue数据
 
 ### vueBus $emit $on $off
+跨组件分发事件
+``` js
+// app.js
+var eventBus = {
+  install(Vue,options) {
+      Vue.prototype.$bus = vue
+  }
+};
+Vue.use(eventBus);
+
+// 在不同组件中使用
+this.$bus.$emit('todoSth', params);
+this.$bus.$on('todoSth', (params) => {
+  //todo something
+})
+```
 
 ### slot
+通过插槽传递组件内数据
+``` html
+<!-- current-user.vue components -->
+<template>
+  <span>
+    <slot v-bind:user="user">
+      {{user.lastName}}
+    </slot>
+  </span>  
+</template>
+
+<!-- user views page -->
+<current-user>
+  <template v-slot:default="slotProps">
+    {{ slotProps.user.firstName }}
+  </template>
+</current-user>
+```
+
+### vue-router props
+``` js
+// router.js
+{
+  path: xxx,
+  component: () => import('@/views/xxx.vue'),
+  props: route => ({
+    aaa: route.query.aaa,
+  }),
+}
+
+// xxx.vue views
+export default {
+  name: 'xxx',
+  props: ['aaa'],
+}  
+```
+
+### 过渡
+通过以下特性来自定义过渡类名
+- enter-class
+- enter-active-class
+- enter-to-class (2.1.8+)
+- leave-class
+- leave-active-class
+- leave-to-class (2.1.8+)
+
+``` HTML
+<transition
+  enter-active-class="animated tada"
+  leave-active-class="animated bounceOutRight"
+>
+  <p v-if="show">hello</p>
+</transition>
+```
+
+### mixin
+mixin分发Vue组件中的可复用功能,当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。
