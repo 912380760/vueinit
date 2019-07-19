@@ -1,45 +1,45 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
 import store from './store'
+import axios from 'axios';
+import VueAxios from 'vue-axios'
+import VueLazyload from 'vue-lazyload'
+import 'normalize.css'
+import 'animate.css'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false;
 
-import axios from 'axios'
 // 设置默认请求地址
 // axios.defaults.baseURL = 'http://10.10.90.36:8000/api';
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 // 配置页面加载过度条
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 router.beforeEach((to,from,next) => {
-  NProgress.start()
+  NProgress.start();
   next()
-})
+});
 router.afterEach(() => {
   NProgress.done()
-})
-
-// 添加normalize Css
-import 'normalize.css'
-
-// 添加animate CSS
-import 'animate.css'
+});
 
 // 引入elementUI框架
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 
-/* eslint-disable no-new */
+// 路由懒加载
+Vue.use(VueLazyload,{
+  preLoad: 1,
+  error: '/lazyloadImg/404.png',
+  loading: '/lazyloadImg/loading.svg',
+  try: 1 // default 1
+});
+
 new Vue({
-  el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
-})
+  render: h => h(App)
+}).$mount('#app');

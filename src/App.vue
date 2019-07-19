@@ -4,16 +4,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
-}
-</script>
-
-<style>
+<style lang="less">
 #app {
-  font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif, Arial;
-  font-size: 16px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
